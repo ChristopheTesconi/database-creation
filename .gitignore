@@ -1,3 +1,5 @@
-# Fichier de config
-config.ini
+# Composer
+vendor
 
+# Fichier de config
+app/config.ini
