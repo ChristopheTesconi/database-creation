@@ -40,4 +40,37 @@ abstract class CoreController
         require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';
     }
 
+        /**
+     * Méthode permettant de rediriger l'internaute vers la page d'une route fournie
+     *
+     * @param string $routeName Nom de la route
+     * @param array $routeParams Paramètre pour générer cette route
+     * @return void
+     */
+    protected function redirectToRoute(string $routeName, $routeParams = [])
+    {
+        // global, toujours moche, mais pour l'instant, on sait pas faire autrement
+        global $router;
+
+        // On génère l'URL
+        $url = $router->generate($routeName, $routeParams);
+
+        // On redirige vers cette URL
+        header('Location: ' . $url);
+        exit;
+    }
+
+    /**
+     * Méthode permettant de générer un token aléatoire
+     * 
+     * @return string
+     */ 
+    protected function generateToken()
+    {
+        // Génération d'un token aléatoire
+        $_SESSION['token'] = md5 (getmypid() . '-origamiCSRF*' . time() . 'toto' . mt_rand(1000, 10000000));
+
+        return $_SESSION['token'];
+    }
+
 }

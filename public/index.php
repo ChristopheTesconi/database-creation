@@ -17,7 +17,8 @@ session_start();
 
 
 // création de l'objet router
-// Cet objet va gérer les routes pour nous, et surtout il va
+// Cet objet va gérer les routes pour nous, et surtout il va diriger les requetes entrantes  
+// vers les controllers appropriés de notre application en fonction des routes définies.
 $router = new AltoRouter();
 
 // le répertoire (après le nom de domaine) dans lequel on travaille est celui-ci

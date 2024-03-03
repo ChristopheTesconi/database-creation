@@ -35,3 +35,23 @@ $router->map(
     ],
     'origami-list'
 );
+
+$router->map(
+    'GET',
+    '/origamis/add',
+    [
+        'method' => 'add',
+        'controller' => $controllersNamespace . 'OrigamiController'
+    ],
+    'origami-add'
+);
+
+$router->map(
+    'POST',
+    '/origamis/add',
+    [
+        'method' => 'addPost',
+        'controller' => $controllersNamespace . 'OrigamiController'
+    ],
+    'origami-addPost'
+);

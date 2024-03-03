@@ -46,7 +46,21 @@
             </div>
         </div>
     </nav>
-<br>
-    <p>
-            Bienvenue dans le backOffice <strong>des passionnés d'Origamis !</strong>
-        </p>
+
+    <a href="<?= $router->generate('origami-list') ?>" class="btn btn-success float-end">Retour</a>
+        <h2><?php if (!empty($origamiId)) : ?>Mettre à jour<?php else : ?>Ajouter<?php endif ?> un origami</h2>
+        
+        <form action="" method="POST" class="mt-5">
+            <input type="hidden" name="token" value="<?= $token ?>">
+            <div class="mb-3">
+                <label class="form-label" for="name">Nom</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="" value="<?= $origami->getName() ?>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <input type="text" class="form-control" name="description" id="description" placeholder="" value="<?= $origami->getDescription() ?>">
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
+            </div>
+        </form>

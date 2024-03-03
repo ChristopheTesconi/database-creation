@@ -40,6 +40,8 @@
                         <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Origamis</a>
                     </li>
                     <li class="nav-item">
+                    <a class="nav-link" href="<?= $router->generate('origami-add') ?>">Ajouter</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -81,7 +83,7 @@
 
 </html>
 
-<!-- <a class="nav-link" href="<?= $router->generate('student-list') ?>">Utilisateurs</a>
+<!-- <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Utilisateurs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $router->generate('appuser-list') ?>">Commentaires</a>

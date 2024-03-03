@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Utils\Database;
 Use PDO;
 
-class Origami
+class Origami extends CoreModel
 {
     /**
      * @var int
@@ -48,6 +48,48 @@ class Origami
     }
 
     /**
+     * Méthode permettant d'ajouter un origami dans la table 'origamis'
+     * 
+     * @return bool
+     */
+protected function insert()
+{
+    // Récupération de l'objet PDO qui représente la connexion à la base de données
+    $pdo = Database::getPDO();
+    
+    //Ecriture de la requete sql INSERT INTO
+    $sql = '
+    INSERT INTO `origamis` (name, description) VALUES (:name, :description)
+    ';
+
+    // Préparation de la requete d'insertion
+    $pdoStatement = $pdo->prepare($sql);
+
+    // On bind ou lie chaque placeholder
+    // Un placeholder est un marqueur ou un symbole utilisé dans 
+    // une requete SQL pour représenter une valeur qui sera fournie plus tard,
+    // lors de l'exécution de la requete.
+    $pdoStatement->bindValue(':name', $this->name, PDO::PARAM_STR);
+    $pdoStatement->bindValue(':description', $this->name, PDO::PARAM_STR);
+
+    // On exécute la requete préparée
+    $ok = $pdoStatement->execute();
+
+    // Si au moins une ligne est ajoutée
+    if ($pdoStatement->rowCount() > 0) {
+        // Alors on récupère l'id auto-incrémenté généré par MySQL
+        $this->id = $pdo->lastInsertId();
+
+        // On retourne vrai car l'ajout a parfaitement fonctionné
+        return true;
+        // => l'interpréteur PHP sort de cette fonction car on a retourné une donné
+    }
+
+    // Si on arrive ici, c'est que quelque chose n'a pas fonctionné donc on retourne FAUX
+    return false;
+}
+
+    /**
      * Get the value of id
      *
      * @return  int
@@ -57,7 +99,7 @@ class Origami
         return $this->id;
     }
 
-        /**
+    /**
      * Get the value of name
      *
      * @return string
@@ -70,7 +112,7 @@ class Origami
     /**
      * Set the value of name
      *
-     * @param  string  $name
+     * @param string $name 
      */
     public function setName(string $name)
     {
