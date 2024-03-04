@@ -40,9 +40,6 @@
                         <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Origamis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $router->generate('user-list') ?>">Utilisateurs</a>
-                    </li>
-                    <li class="nav-item">
                     <a class="nav-link" href="<?= $router->generate('origami-add') ?>">Ajouter</a>
                     </li>
                 </ul>
@@ -50,34 +47,40 @@
         </div>
     </nav>
     <div class="container my-4">
-<h2>Liste des Origamis</h2>
-<div class="container my-4">
-<table class="table table-hover mt-4">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Description</th>
-            <th scope="col">Créé le</th>
-            <th scope="col">Modifié le</th>
-            <th scope="col">Utilisateurs</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($origamisList as $currentOrigami) : ?>
-        <tr>
-            <th scope="row"><?= $currentOrigami->getId() ?></th>
-            <td><?= $currentOrigami->getName() ?></td>
-            <td><?= $currentOrigami->getDescription() ?></td>
-            <td><?= $currentOrigami->getCreatedAt() ?></td>
-            <td><?= $currentOrigami->getUpdatedAt() ?></td>
-            <td><?= $currentOrigami->getUsersId() ?></td> 
-        </tr>
-        <?php endforeach ?>
-    </tbody>
-</table>
+    <a href="<?= $router->generate('user-list') ?>" class="btn btn-success float-end">Retour</a>
+        <h2><?php if (!empty($userId)) : ?>Mettre à jour<?php else : ?>Ajouter<?php endif ?> un utilisateur</h2>
+        
+        <form action="" method="POST" class="mt-5">
 
-</div>
+            <input type="hidden" name="token" value="<?= $token ?>">
+            <div class="mb-3">
+                <label class="form-label" for="email">Adresse email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="" value="<?= $user->getEmail() ?>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="name">Nom</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="" value="<?= $user->getName() ?>">
+            </div>
+            <?php if (empty($userId)) : // Si ajout, pas modification ?>
+            <div class="mb-3">
+                <label class="form-label" for="password">Mot de passe</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="" value="">
+            </div>
+            <?php endif ?>
+            <div class="mb-3">
+                <label class="form-label" for="role">Role</label>
+                <select name="role" id="role" class="form-select">
+                    <option value="user"<?php if ($user->getRole() == 'user') : ?> selected<?php endif ?>>Utilisateur</option>
+                    <option value="admin"<?php if ($user->getRole() == 'admin') : ?> selected<?php endif ?>>Administrateur</option>
+                </select>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
+            </div>
+            
+        </form>
+        </div>
+
 
 <!-- And for every user interaction, we import Bootstrap JS components -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
@@ -85,14 +88,3 @@
 </body>
 
 </html>
-
-<!-- <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Utilisateurs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $router->generate('appuser-list') ?>">Commentaires</a>
-                    </li>
-                    {# <?php if (!empty($_SESSION['connectedUserId'])) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $router->generate('appuser-logout') ?>">Se déconnecter</a> 
-                    </li>
-                    <?php endif ?> #} --> 

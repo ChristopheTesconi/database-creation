@@ -40,14 +40,17 @@
                         <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Origamis</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= $router->generate('user-list') ?>">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="<?= $router->generate('origami-add') ?>">Ajouter</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <a href="<?= $router->generate('origami-list') ?>" class="btn btn-success float-end">Retour</a>
+    <div class="container my-4">
+    <a href="<?= $router->generate('origami-list') ?>" class="btn btn-success float-end mt-2 mr-2">Retour</a>
         <h2><?php if (!empty($origamiId)) : ?>Mettre à jour<?php else : ?>Ajouter<?php endif ?> un origami</h2>
         
         <form action="" method="POST" class="mt-5">
@@ -64,3 +67,13 @@
                 <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
             </div>
         </form>
+        </div>
+
+        
+
+<!-- And for every user interaction, we import Bootstrap JS components -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -96,10 +96,10 @@ class OrigamiController extends CoreController
         // On réaffiche le formulaire 
         // ON a besoin de renseigner un model Origami pour préremplir le formulaire
         $origami = new Origami();
-        if ($name !== null) {
+        if ($name) {
             $origami->setName($name);
         }
-        if ($description !== null) {
+        if ($description) {
             $origami->setDescription($description);
         }
 

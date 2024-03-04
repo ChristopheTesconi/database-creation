@@ -40,6 +40,9 @@
                         <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Origamis</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= $router->generate('user-list') ?>">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="<?= $router->generate('origami-add') ?>">Ajouter</a>
                     </li>
                 </ul>

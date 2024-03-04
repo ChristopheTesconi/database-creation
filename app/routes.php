@@ -55,3 +55,61 @@ $router->map(
     ],
     'origami-addPost'
 );
+
+// ---- USERS ----
+$router->map(
+    'GET',
+    '/users/list',
+    [
+        'method' => 'list',
+        'controller' => $controllersNamespace . 'UserController'
+    ],
+    'user-list'
+);
+$router->map(
+    'GET',
+    '/users/add',
+    [
+        'method' => 'add',
+        'controller' => $controllersNamespace . 'UserController'
+    ],
+    'user-add'
+);
+$router->map(
+    'POST',
+    '/users/add',
+    [
+        'method' => 'addPost',
+        'controller' => $controllersNamespace . 'UserController'
+    ],
+    'users-add-post'
+);
+
+// ---- SIGN IN ----
+$router->map(
+    'GET',
+    '/users/signin',
+    [
+        'method' => 'signin',
+        'controller' => $controllersNamespace . 'UserController'
+    ],
+    'user-signin'
+);
+$router->map(
+    'POST',
+    '/users/signin',
+    [
+        'method' => 'signinPost',
+        'controller' => $controllersNamespace . 'UserController'
+    ],
+    'user-signin-post'
+);
+$router->map(
+    'GET',
+    '/users/logout',
+    [
+        'method' => 'logout',
+        'controller' => $controllersNamespace . 'UserController'
+    ],
+    'user-logout'
+);

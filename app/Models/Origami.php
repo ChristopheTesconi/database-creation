@@ -70,7 +70,7 @@ protected function insert()
     // une requete SQL pour représenter une valeur qui sera fournie plus tard,
     // lors de l'exécution de la requete.
     $pdoStatement->bindValue(':name', $this->name, PDO::PARAM_STR);
-    $pdoStatement->bindValue(':description', $this->name, PDO::PARAM_STR);
+    $pdoStatement->bindValue(':description', $this->description, PDO::PARAM_STR);
 
     // On exécute la requete préparée
     $ok = $pdoStatement->execute();

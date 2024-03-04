@@ -50,34 +50,35 @@
         </div>
     </nav>
     <div class="container my-4">
-<h2>Liste des Origamis</h2>
+    <h2>Liste des Utilisateurs</h2>
 <div class="container my-4">
 <table class="table table-hover mt-4">
     <thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nom</th>
-            <th scope="col">Description</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
             <th scope="col">Créé le</th>
             <th scope="col">Modifié le</th>
-            <th scope="col">Utilisateurs</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($origamisList as $currentOrigami) : ?>
+        <?php foreach ($usersList as $currentUser) : ?>
         <tr>
-            <th scope="row"><?= $currentOrigami->getId() ?></th>
-            <td><?= $currentOrigami->getName() ?></td>
-            <td><?= $currentOrigami->getDescription() ?></td>
-            <td><?= $currentOrigami->getCreatedAt() ?></td>
-            <td><?= $currentOrigami->getUpdatedAt() ?></td>
-            <td><?= $currentOrigami->getUsersId() ?></td> 
+            <th scope="row"><?= $currentUser->getId() ?></th>
+            <td><?= $currentUser->getName() ?></td>
+            <td><?= $currentUser->getEmail() ?></td>
+            <td><?= $currentUser->getRole() ?></td>
+            <td><?= $currentUser->getCreatedAt() ?></td>
+            <td><?= $currentUser->getUpdatedAt() ?></td>
         </tr>
         <?php endforeach ?>
     </tbody>
 </table>
 
-</div>
+        </div>
+
 
 <!-- And for every user interaction, we import Bootstrap JS components -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
@@ -85,14 +86,3 @@
 </body>
 
 </html>
-
-<!-- <a class="nav-link" href="<?= $router->generate('origami-list') ?>">Utilisateurs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $router->generate('appuser-list') ?>">Commentaires</a>
-                    </li>
-                    {# <?php if (!empty($_SESSION['connectedUserId'])) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $router->generate('appuser-logout') ?>">Se déconnecter</a> 
-                    </li>
-                    <?php endif ?> #} --> 
